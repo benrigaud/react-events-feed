@@ -1,12 +1,13 @@
-import useEventsData from '../../../hooks/useEventsData'
 import Event from './components/Event'
 import PropTypes from 'prop-types'
+import styles from './Events.module.css'
+import { useNavigate } from 'react-router-dom'
 
-const Events = ({ searchTerm }) => {
-	const { events, isLoading, error } = useEventsData()
+const Events = ({ searchTerm, events }) => {
+	const navigate = useNavigate()
 
 	const handleEventButtonClick = (id) => {
-		console.log('Event clicked:', id)
+		navigate(`/details/${id}`)
 	}
 
 	const renderEvents = () => {
@@ -18,43 +19,31 @@ const Events = ({ searchTerm }) => {
 			})
 		}
 
-		return filteredEvents.map(
-			(event) => (
-				console.log(event),
-				(
-					<Event
-						key={event.id}
-						name={event.name}
-						date={event.dates.start.localDate}
-						description={event.info}
-						image={event.images[0].url}
-						id={event.id}
-						link={event.url}
-						onEventClick={handleEventButtonClick}
-						venue={event._embedded.venues[0].name}
-					/>
-				)
-			)
-		)
-	}
-
-	if (isLoading) {
-		return <div>Loading...</div>
-	}
-
-	if (error) {
-		return <div>Error: {error.message}</div>
+		return filteredEvents.map((event) => (
+			<Event
+				key={event.id}
+				name={event.name}
+				date={event.dates.start.localDate}
+				info={event.info}
+				image={event.images[0].url}
+				id={event.id}
+				link={event.url}
+				onEventClick={handleEventButtonClick}
+				venue={event._embedded?.venues[0]?.name}
+			/>
+		))
 	}
 
 	return (
 		<div>
-			<div className="events">{renderEvents()}</div>
+			<div className={styles.events}>{renderEvents()}</div>
 		</div>
 	)
 }
 
 Events.propTypes = {
-	searchTerm: PropTypes.string.isRequired
+	searchTerm: PropTypes.string.isRequired,
+	events: PropTypes.array.isRequired
 }
 
 export default Events

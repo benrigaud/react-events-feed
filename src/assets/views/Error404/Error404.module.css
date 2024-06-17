@@ -1,0 +1,17 @@
+.container {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+	height: 100vh;
+}
+
+.title {
+	font-size: 22px;
+	margin: 0;
+}
+
+.description {
+	margin: 0;
+	font-size: 20px;
+}

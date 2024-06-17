@@ -1,0 +1,12 @@
+.events {
+	display: grid;
+	flex-wrap: wrap;
+	gap: 30px;
+	padding: 2rem;
+}
+
+@media screen and (max-width: 1040px) {
+	.events {
+		grid-template-columns: 1fr;
+	}
+}

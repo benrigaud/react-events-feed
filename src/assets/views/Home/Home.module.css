@@ -1,0 +1,34 @@
+.pagination {
+	list-style: none;
+	display: flex;
+	gap: 10px;
+	flex-wrap: wrap;
+	li {
+		a {
+			background-color: #2a2f8721;
+			border-radius: 5px;
+			font-weight: bold;
+			color: #ffffff;
+			padding: 10px 16px;
+			display: block;
+			cursor: pointer;
+			transition: all 0.4s;
+			&:hover {
+				background-color: #2a2f87;
+			}
+		}
+		&.active {
+			a {
+				background-color: #2a2f87;
+			}
+		}
+		&.disabled {
+			a {
+				cursor: not-allowed;
+				&:hover {
+					background-color: #2a2f8721;
+				}
+			}
+		}
+	}
+}

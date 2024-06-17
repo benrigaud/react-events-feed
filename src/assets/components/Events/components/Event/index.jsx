@@ -1,34 +1,37 @@
 import PropTypes from 'prop-types'
 import moment from 'moment'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faCalendar } from '@fortawesome/free-solid-svg-icons'
+import { faLocationDot } from '@fortawesome/free-solid-svg-icons'
+import styles from './Event.module.css'
+// import { Link } from 'react-router-dom'
 
-const Event = ({
-	date,
-	// id,
-	name,
-	image,
-	// onEventClick,
-	link,
-	venue,
-	description
-}) => {
-	// const handleSeeMoreClick = (e) => {
-	// 	e.stopPropagation()
-	// 	onEventClick(id)
-	// }
+const iconCalendar = <FontAwesomeIcon icon={faCalendar} />
+const iconLocation = <FontAwesomeIcon icon={faLocationDot} />
+const Event = ({ date, id, name, image, onEventClick, venue, info }) => {
+	const handleSeeMoreClick = (e) => {
+		e.stopPropagation()
+		onEventClick(id)
+	}
 
 	return (
-		<div className="event">
-			<img src={image} alt={name} className="event-image" />
-			<div className="event-details">
-				<h2 className="event-name">
-					<i className="fas fa-phone"></i> {name}
-				</h2>
-				<p className="event-venue">{venue}</p>
-				<p className="event-date">{moment(date).format('MM/DD/YYYY')}</p>
-				<p className="event-description">{description}</p>
-				<a href={link} target="_blank" className="btn">
-					Get Tickets
-				</a>
+		<div className={styles.event}>
+			<img src={image} alt={name} className={styles.eventImage} />
+			<div className={styles.eventDetails}>
+				<h2 className={styles.eventName}>{name}</h2>
+				{venue && (
+					<p className={styles.eventVenue}>
+						{iconLocation} {venue}
+					</p>
+				)}
+				<p className={styles.eventDate}>
+					{iconCalendar} {moment(date).format('MMMM DD YYYY')}
+				</p>
+				{info && <p className={styles.eventDescription}>{info}</p>}
+				<button onClick={handleSeeMoreClick} className={styles.eventBtn}>
+					{/* <Link to={`/details/${id}`}>Ver mas</Link> */}
+					Ver mas
+				</button>
 			</div>
 		</div>
 	)
@@ -40,9 +43,8 @@ Event.propTypes = {
 	image: PropTypes.string.isRequired,
 	id: PropTypes.string.isRequired,
 	onEventClick: PropTypes.func.isRequired,
-	link: PropTypes.string.isRequired,
 	venue: PropTypes.string.isRequired,
-	description: PropTypes.string.isRequired
+	info: PropTypes.string.isRequired
 }
 
 export default Event
