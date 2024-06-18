@@ -1,7 +1,7 @@
 .container {
 	padding: 2rem;
 	.eventBackBtn {
-		background-color: #747bff;
+		background-color: #4c52be;
 		color: #ffffff;
 		padding: 5px 10px;
 		border-radius: 5px;
@@ -12,7 +12,8 @@
 		font-weight: bold;
 		transition: all 0.4s;
 		&:hover {
-			background-color: #4e52a2;
+			background-color: #4146a4;
+			color: #ffffff;
 		}
 	}
 	img {

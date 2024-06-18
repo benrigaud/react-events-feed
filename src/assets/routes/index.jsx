@@ -3,6 +3,8 @@ import Home from '../views/Home'
 import Details from '../views/Details'
 import Error404 from '../views/Error404'
 import Profile from '../views/profile'
+import LikedEvents from '../views/profile/components/LikedEvents'
+import MyInfo from '../views/profile/components/MyInfo'
 
 const router = createBrowserRouter([
 	{
@@ -11,7 +13,7 @@ const router = createBrowserRouter([
 		errorElement: <Error404 />
 	},
 	{
-		path: '/details/:eventId',
+		path: '/event/:eventId',
 		element: <Details />
 	},
 	{
@@ -20,11 +22,11 @@ const router = createBrowserRouter([
 		children: [
 			{
 				path: 'my-info',
-				element: <div>My Info</div>
+				element: <MyInfo />
 			},
 			{
 				path: 'liked-events',
-				element: <div>Liked Events</div>
+				element: <LikedEvents />
 			}
 		]
 	}

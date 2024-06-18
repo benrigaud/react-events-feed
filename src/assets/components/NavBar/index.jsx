@@ -1,6 +1,11 @@
 import { useState, useEffect } from 'react'
 import PropTypes from 'prop-types'
+import { Link } from 'react-router-dom'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faUser } from '@fortawesome/free-solid-svg-icons'
 import styles from './NavBar.module.css'
+
+const iconUser = <FontAwesomeIcon icon={faUser} />
 
 const NavBar = ({ onSearch }) => {
 	const [search, setSearch] = useState('')
@@ -29,6 +34,7 @@ const NavBar = ({ onSearch }) => {
 					onKeyDown={handleInputKeyDown}
 					value={search}
 				/>
+				<Link to="/profile/my-info">{iconUser}</Link>
 			</div>
 		</div>
 	)

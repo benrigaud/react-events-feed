@@ -1,3 +1,4 @@
+import { memo } from 'react'
 import Event from './components/Event'
 import PropTypes from 'prop-types'
 import styles from './Events.module.css'
@@ -7,7 +8,7 @@ const Events = ({ searchTerm, events }) => {
 	const navigate = useNavigate()
 
 	const handleEventButtonClick = (id) => {
-		navigate(`/details/${id}`)
+		navigate(`/event/${id}`)
 	}
 
 	const renderEvents = () => {
@@ -46,4 +47,4 @@ Events.propTypes = {
 	events: PropTypes.array.isRequired
 }
 
-export default Events
+export default memo(Events)

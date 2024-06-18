@@ -1,0 +1,12 @@
+.likedEventsWrapper {
+	display: grid;
+	flex-wrap: wrap;
+	gap: 30px;
+	padding: 20px 0 0;
+}
+
+@media screen and (max-width: 1040px) {
+	.likedEventsWrapper {
+		grid-template-columns: 1fr;
+	}
+}

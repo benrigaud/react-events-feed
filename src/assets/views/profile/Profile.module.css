@@ -1,0 +1,41 @@
+.profile {
+	padding: 2rem;
+}
+.backButton {
+	background-color: #4c52be;
+	color: #ffffff;
+	padding: 5px 10px;
+	border-radius: 5px;
+	max-width: max-content;
+	display: block;
+	font-size: 12px;
+	margin-bottom: 10px;
+	font-weight: bold;
+	transition: all 0.4s;
+	&:hover {
+		background-color: #4146a4;
+		color: #ffffff;
+	}
+}
+.tabs {
+	display: flex;
+	gap: 10px;
+}
+.tab {
+	transition: all 0.4s;
+	cursor: pointer;
+	padding: 5px 15px;
+	font-weight: bold;
+	border-radius: 5px;
+	font-size: 12px;
+	display: flex;
+	align-items: center;
+	gap: 5px;
+	&:hover {
+		background-color: #5a61ef;
+	}
+	&.active {
+		color: #ffffff;
+		background-color: #4c52be;
+	}
+}

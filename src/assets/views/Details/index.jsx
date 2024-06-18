@@ -24,6 +24,7 @@ const Details = () => {
 					}`
 				)
 				const data = await response.json()
+				console.log(data)
 				setEventData(data)
 				setIsLoading(false)
 			} catch (error) {
@@ -42,6 +43,7 @@ const Details = () => {
 			<Link to="/" className={styles.eventBackBtn}>
 				{iconback} Back
 			</Link>
+
 			{eventData.images ? (
 				<img
 					src={eventData.images[0].url}
@@ -49,20 +51,24 @@ const Details = () => {
 					className={styles.eventHeroImage}
 				/>
 			) : null}
+
 			<div className={styles.mainInfoContainer}>
 				<h2 className={styles.eventTitle}>{eventData.name}</h2>
+
 				{eventData.dates?.start.localDate ? (
 					<p className={styles.eventDate}>
 						{iconCalendar}{' '}
 						{moment(eventData.dates.start.localDate).format('MMMM DD YYYY')}
 					</p>
 				) : null}
+
 				{eventData.info ? (
 					<div className={styles.eventInfo}>
 						<h4>Info</h4>
 						<p>{eventData.info}</p>
 					</div>
 				) : null}
+
 				{eventData.seatmap ? (
 					<div className={styles.eventSeatmap}>
 						<h4>Seatmap</h4>
@@ -73,12 +79,14 @@ const Details = () => {
 						/>
 					</div>
 				) : null}
+
 				{eventData.pleaseNote ? (
 					<div className={styles.eventPleaseNote}>
 						<h4>Please Note</h4>
 						<p>{eventData.pleaseNote}</p>
 					</div>
 				) : null}
+
 				{eventData.priceRanges ? (
 					<div className={styles.eventPriceRanges}>
 						<h4>Price Ranges</h4>
@@ -90,6 +98,7 @@ const Details = () => {
 						))}
 					</div>
 				) : null}
+
 				{eventData.url ? (
 					<a
 						href={eventData.url}
